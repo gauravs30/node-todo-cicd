@@ -4,6 +4,7 @@ pipeline{
     stages{
         stage("Code Clone"){
             steps{
+                echo "Code Cloning"
                 git url: "https://github.com/gauravs30/node-todo-cicd.git", branch: "master"
             }
         }
@@ -27,6 +28,7 @@ pipeline{
         stage("Deploy"){
             steps{
                 sh "docker compose down && docker compose up -d --build "
+                echo "Application is Live"
             }
         }
         
